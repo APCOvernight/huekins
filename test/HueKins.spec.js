@@ -106,6 +106,18 @@ describe('Huekins tests', function () {
     this.clock.tick(2000)
     mockBaseClassChange.verify()
   })
+  it('polls jenkins using custom timing', async () => {
+    this.clock = sinon.useFakeTimers()
+    const configMock = {'url': 'FakeJenkinsAddress', 'job': 'fakeJob', 'pollInterval': '20'}
+    const emitterMock = null
+    const systemUnderTest = new Huekins(configMock, emitterMock)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('setStatus').once()
+
+    await systemUnderTest.start()
+
+    this.clock.tick(20)
+    mockBaseClassChange.verify()
+  })
 
   it('If jenkins promisfy is set to false, throw', async () => {
     const configMock = {'url': 'FakeJenkinsAddress', 'job': 'fakeJob'}

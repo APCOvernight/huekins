@@ -6,6 +6,7 @@ class huekins extends baseModule {
     console.info(' ▶️ Starting Huekins...')
     this.jenkins = require('jenkins')({ baseUrl: config.url, promisify: true })
     this.job = config.job
+    this.pollInterval = config.pollInterval || 2000
     // this.statusPrecedence = ['alert', 'warning', 'working', 'ok']
     console.info(` 🔍 Monitor : ${this.instanceName} created. `)
     console.info(` 👀 Monitoring Jenkins Job : ${this.job}`)
@@ -37,7 +38,7 @@ class huekins extends baseModule {
   }
 
   async start () {
-    setInterval(await this.setStatus.bind(this), 2000)
+    setInterval(await this.setStatus.bind(this), this.pollInterval)
   }
 }
 

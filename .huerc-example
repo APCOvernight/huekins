@@ -1,0 +1,7 @@
+{
+  "name" : "huekins",
+  "url": "http://jenkins/",
+  "job": "APCOvernight/highstreet/develop",
+  "light": "Hue color lamp 1",
+  "pollInterval": 1000,
+}
