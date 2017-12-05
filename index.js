@@ -11,10 +11,10 @@ class huekins extends baseModule {
     console.info(` 👀 Monitoring Jenkins Job : ${this.job}`)
   }
 
- /**
- * Instance name generator. Can be overridden by modules, should create unique name
- * @return {String} Uuid
- */
+  /**
+  * Instance name generator. Can be overridden by modules, should create unique  name
+  * @return {String} Uuid
+  */
   generateInstanceName () {
     return 'Jenkins:' + this.config.job
   }

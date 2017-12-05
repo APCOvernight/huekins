@@ -1,4 +1,4 @@
-// var expect = require('chai').expect
+/* eslint-disable no-unused-expressions */
 const chai = require('chai')
 var Huekins = require('../')
 var sinon = require('sinon')
@@ -110,10 +110,16 @@ describe('Huekins tests', function () {
   it('If jenkins promisfy is set to false, throw', async () => {
     const configMock = {'url': 'FakeJenkinsAddress', 'job': 'fakeJob'}
     const emitterMock = null
-    const mockJenkinsObj = sinon.stub(jenkins, 'Jenkins').callsFake(function (data) {
-      expect(data.promisify).to.be.true
+    let isPromisified = false
+    const mockJenkins = sinon.stub(jenkins, 'Jenkins').callsFake(function (data) {
+    // Expected an assignment or function call and instead saw an expression
+      isPromisified = data.promisify
     })
-
     const systemUnderTest = new Huekins(configMock, emitterMock)
+
+    expect(true).to.be.true
+    expect(isPromisified).to.be.true
+    expect(systemUnderTest).to.be.an.instanceof(Object)
+    expect(mockJenkins).to.be.an.instanceof(Object)
   })
 })
