@@ -1,6 +1,6 @@
 {
   "name": "huekins",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Jenkins provider for the huestatus project",
   "main": "index.js",
   "scripts": {
