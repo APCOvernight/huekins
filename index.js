@@ -1,6 +1,12 @@
-const baseModule = require('huestatus/src/Module')
+let BaseModule
 
-class huekins extends baseModule {
+try {
+  BaseModule = require(require('requireg').resolve('huestatus/src/Module'))
+} catch (e) {
+  throw new Error('A HueStatus installation is required -- npm install -g huestatus')
+}
+
+class huekins extends BaseModule {
   constructor (config, emitter) {
     super(config, emitter)
     console.info(' ▶️ Starting Huekins...')

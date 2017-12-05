@@ -12,8 +12,8 @@
   "author": "Mike Hingley",
   "license": "MIT",
   "dependencies": {
-    "requireg": "^0.1.7",
-    "jenkins": "^0.20.1"
+    "jenkins": "^0.20.1",
+    "requireg": "^0.1.7"
   },
   "devDependencies": {
     "apc-style": "^0.4.3",
