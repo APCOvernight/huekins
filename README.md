@@ -5,4 +5,6 @@
 
 
 # huekins
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/APCOvernight/huekins.svg)](https://greenkeeper.io/)
 Jenkins report for HueStatus
