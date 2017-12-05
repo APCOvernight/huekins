@@ -4,15 +4,16 @@
   "description": "Jenkins provider for the huestatus project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint && nyc mocha",
     "lint": "eslint *.js test/**/*.js src/**/*.js lib/**/*.js ",
-    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov | codeclimate-test-reporter"
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov | codeclimate-test-reporter",
+    "stryker": "stryker run"
   },
   "author": "Mike Hingley",
   "license": "MIT",
   "dependencies": {
-    "jenkins": "^0.20.1",
-    "mocha": "^4.0.1"
+    "requireg": "^0.1.7",
+    "jenkins": "^0.20.1"
   },
   "devDependencies": {
     "apc-style": "^0.4.3",
