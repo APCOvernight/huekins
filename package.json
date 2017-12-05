@@ -1,0 +1,86 @@
+{
+  "name": "huekins",
+  "version": "0.1.0",
+  "description": "Jenkins provider for the huestatus project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js test/**/*.js src/**/*.js lib/**/*.js ",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=text-lcov | codeclimate-test-reporter"
+  },
+  "author": "Mike Hingley",
+  "license": "MIT",
+  "dependencies": {
+    "jenkins": "^0.20.1",
+    "mocha": "^4.0.1"
+  },
+  "devDependencies": {
+    "apc-style": "^0.4.3",
+    "chai": "^4.1.2",
+    "codeclimate-test-reporter": "^0.5.0",
+    "coveralls": "^3.0.0",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
+    "sinon": "^4.1.2",
+    "sinon-chai": "^2.14.0",
+    "stryker": "^0.15.4",
+    "stryker-api": "^0.11.0",
+    "stryker-html-reporter": "^0.11.2",
+    "stryker-javascript-mutator": "^0.2.3",
+    "stryker-mocha-framework": "^0.7.1",
+    "stryker-mocha-runner": "^0.10.1"
+  },
+  "nyc": {
+    "include": [
+      "index.js"
+    ],
+    "all": true,
+    "watermarks": {
+      "lines": [
+        90,
+        99
+      ],
+      "functions": [
+        90,
+        99
+      ],
+      "branches": [
+        90,
+        99
+      ],
+      "statements": [
+        90,
+        99
+      ]
+    },
+    "reporter": [
+      "clover",
+      "text",
+      "text-summary",
+      "html",
+      "cobertura"
+    ],
+    "cache": true
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/APCOvernight/huekins.git"
+  },
+  "keywords": [
+    "jenkins",
+    "philips",
+    "hue",
+    "build",
+    "status",
+    "light",
+    "error",
+    "reporting"
+  ],
+  "bugs": {
+    "url": "https://github.com/APCOvernight/huekins/issues"
+  },
+  "homepage": "https://github.com/APCOvernight/huekins#readme"
+}
