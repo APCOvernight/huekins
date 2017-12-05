@@ -26,7 +26,7 @@ describe('Huekins tests', function () {
     const systemUnderTest = new Huekins(configMock, emitterMock)
     const mockJenkins = sinon.mock(systemUnderTest.jenkins.job).expects('get').returns({'lastBuild': '2001-01-01', 'number': '10'})
     const mockGetBuild = sinon.mock(systemUnderTest.jenkins.build).expects('get').returns({'result': 'SUCCESS'})
-    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('ok', `  ✅ Job build successful (fakeJob)`)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('ok', `Job build successful (fakeJob)`)
 
     await systemUnderTest.setStatus(false)
 
@@ -41,7 +41,7 @@ describe('Huekins tests', function () {
     const systemUnderTest = new Huekins(configMock, emitterMock)
     const mockJenkins = sinon.mock(systemUnderTest.jenkins.job).expects('get').returns({'lastBuild': '2001-01-01', 'number': '10'})
     const mockGetBuild = sinon.mock(systemUnderTest.jenkins.build).expects('get').returns({'result': 'FAILURE'})
-    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('alert', `  ⛔️ Job build failed (fakeJob)`)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('alert', `Job build failed (fakeJob)`)
 
     await systemUnderTest.setStatus(false)
 
@@ -56,7 +56,7 @@ describe('Huekins tests', function () {
     const systemUnderTest = new Huekins(configMock, emitterMock)
     const mockJenkins = sinon.mock(systemUnderTest.jenkins.job).expects('get').returns({'lastBuild': '2001-01-01', 'number': '10'})
     const mockGetBuild = sinon.mock(systemUnderTest.jenkins.build).expects('get').returns({'result': 'UNSTABLE'})
-    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('warning', `  ⚠️ Job unstable (fakeJob)`)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('warning', `Job unstable (fakeJob)`)
 
     await systemUnderTest.setStatus(false)
 
@@ -71,7 +71,7 @@ describe('Huekins tests', function () {
     const systemUnderTest = new Huekins(configMock, emitterMock)
     const mockJenkins = sinon.mock(systemUnderTest.jenkins.job).expects('get').returns({'lastBuild': '2001-01-01', 'number': '10'})
     const mockGetBuild = sinon.mock(systemUnderTest.jenkins.build).expects('get').returns({'result': 'ABORTED'})
-    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('warning', `  ⚠️ Job unstable (fakeJob)`)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('warning', `Job unstable (fakeJob)`)
 
     await systemUnderTest.setStatus(false)
     mockJenkins.verify()
@@ -85,7 +85,7 @@ describe('Huekins tests', function () {
     const systemUnderTest = new Huekins(configMock, emitterMock)
     const mockJenkins = sinon.mock(systemUnderTest.jenkins.job).expects('get').returns({'lastBuild': '2001-01-01', 'number': '10'})
     const mockGetBuild = sinon.mock(systemUnderTest.jenkins.build).expects('get').returns({'result': null})
-    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('working', `  🏃🏻 Job running (fakeJob)`)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('working', ` Job running (fakeJob)`)
 
     await systemUnderTest.setStatus(false)
 

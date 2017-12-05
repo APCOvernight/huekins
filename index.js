@@ -9,13 +9,13 @@ try {
 class huekins extends BaseModule {
   constructor (config, emitter) {
     super(config, emitter)
-    console.info(' ▶️ Starting Huekins...')
+    console.info(' ▶️  Starting Huekins...')
     this.jenkins = require('jenkins')({ baseUrl: config.url, promisify: true })
     this.job = config.job
     this.pollInterval = config.pollInterval || 2000
     // this.statusPrecedence = ['alert', 'warning', 'working', 'ok']
-    console.info(` 🔍 Monitor : ${this.instanceName} created. `)
-    console.info(` 👀 Monitoring Jenkins Job : ${this.job}`)
+    console.info(` 🔍  Monitor : ${this.instanceName} created. `)
+    console.info(` 👀  Monitoring Jenkins Job : ${this.job}`)
   }
 
   /**
@@ -30,16 +30,16 @@ class huekins extends BaseModule {
     const job = await this.jenkins.job.get(this.job)
     const lastBuild = await this.jenkins.build.get(this.job, job.lastBuild.number)
     if (lastBuild.result === 'SUCCESS') {
-      await this.change('ok', `  ✅ Job build successful (${this.job})`)
+      await this.change('ok', `Job build successful (${this.job})`)
     }
     if (lastBuild.result === 'FAILURE') {
-      await this.change('alert', `  ⛔️ Job build failed (${this.job})`)
+      await this.change('alert', `Job build failed (${this.job})`)
     }
     if (lastBuild.result === 'UNSTABLE' || lastBuild.result === 'ABORTED') {
-      await this.change('warning', `  ⚠️ Job unstable (${this.job})`)
+      await this.change('warning', `Job unstable (${this.job})`)
     }
     if (!lastBuild.result) {
-      await this.change('working', `  🏃🏻 Job running (${this.job})`)
+      await this.change('working', `Job running (${this.job})`)
     }
   }
 
