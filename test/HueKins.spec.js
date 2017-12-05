@@ -85,7 +85,7 @@ describe('Huekins tests', function () {
     const systemUnderTest = new Huekins(configMock, emitterMock)
     const mockJenkins = sinon.mock(systemUnderTest.jenkins.job).expects('get').returns({'lastBuild': '2001-01-01', 'number': '10'})
     const mockGetBuild = sinon.mock(systemUnderTest.jenkins.build).expects('get').returns({'result': null})
-    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('working', ` Job running (fakeJob)`)
+    const mockBaseClassChange = sinon.mock(systemUnderTest).expects('change').withArgs('working', `Job running (fakeJob)`)
 
     await systemUnderTest.setStatus(false)
 
