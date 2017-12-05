@@ -16,7 +16,7 @@ Jenkins report for HueStatus
 ## Installation
 
 ```
-npm install -g huestatus huetimerobot
+npm install -g huestatus huekins
 ```
 
 Create a .huerc file on your home directory, see [HueStatus Docs](https://www.npmjs.com/package/huestatus) for more info. Add an object like this to the modules array for each of the projects you want to monitor:
