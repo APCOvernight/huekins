@@ -6,7 +6,15 @@ try {
   throw new Error('A HueStatus installation is required -- npm install -g huestatus')
 }
 
+/**
+ * HueStatus Module
+ * @extends BaseModule
+ */
 class huekins extends BaseModule {
+  /**
+   * @param {Object} config  Config object
+   * @param {Object} emitter HueStatus EventEmitter
+   */
   constructor (config, emitter) {
     super(config, emitter)
     console.info(' ▶️  Starting Huekins...')
@@ -26,23 +34,30 @@ class huekins extends BaseModule {
     return 'Jenkins:' + this.config.job
   }
 
-  async setStatus (debug) {
+  /**
+   * Set the hue status based on fetched job's status
+   * @return {Promise}
+   */
+  async setStatus () {
     const job = await this.jenkins.job.get(this.job)
     const lastBuild = await this.jenkins.build.get(this.job, job.lastBuild.number)
     if (lastBuild.result === 'SUCCESS') {
-      await this.change('ok', `Job build successful (${this.job})`)
+      return this.change('ok', `Job build successful (${this.job})`)
     }
     if (lastBuild.result === 'FAILURE') {
-      await this.change('alert', `Job build failed (${this.job})`)
+      return this.change('alert', `Job build failed (${this.job})`)
     }
     if (lastBuild.result === 'UNSTABLE' || lastBuild.result === 'ABORTED') {
-      await this.change('warning', `Job unstable (${this.job})`)
+      return this.change('warning', `Job unstable (${this.job})`)
     }
     if (!lastBuild.result) {
-      await this.change('working', `Job running (${this.job})`)
+      return this.change('working', `Job running (${this.job})`)
     }
   }
 
+  /**
+   * Start polling setStatus function
+   */
   async start () {
     setInterval(await this.setStatus.bind(this), this.pollInterval)
   }
