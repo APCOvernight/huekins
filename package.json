@@ -12,7 +12,7 @@
   "author": "Mike Hingley",
   "license": "MIT",
   "dependencies": {
-    "jenkins": "^0.20.1",
+    "jenkins": "^0.22.0",
     "requireg": "^0.1.7"
   },
   "devDependencies": {
