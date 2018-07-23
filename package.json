@@ -16,7 +16,7 @@
     "requireg": "^0.1.7"
   },
   "devDependencies": {
-    "apc-style": "1.1.0",
+    "apc-style": "1.2.0",
     "apc-test": "1.1.0"
   },
   "nyc": {
