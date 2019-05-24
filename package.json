@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "jenkins": "^0.22.0",
-    "requireg": "^0.1.7"
+    "requireg": "^0.2.2"
   },
   "devDependencies": {
     "apc-style": "1.1.0",
